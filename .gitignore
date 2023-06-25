@@ -1,0 +1,19 @@
+#Archivos a ignorar
+
+# Ignore .csv file
+codigo_python/*.csv
+
+# Ignore .env file
+.env
+
+# Ignore .json files
+front_end/*.json
+
+# Ignore node_modules
+front_end/node_modules
+
+# Ingore archivos temporales
+.tmp
+
+# Ignore pycache
+codigo_python/__pycache__
