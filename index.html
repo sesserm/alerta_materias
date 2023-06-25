@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genera tu alerta</title>
+<link rel="stylesheet" href="front_end/styles.css">
+</head>
+<body>
+<div class="container">
+<div class="filtros-container">
+<div class="filtro">
+<label for="input1">Codigo:</label>
+<input type="text" id="input1" placeholder="Ingresa un código...">
+</div>
+<div class="filtro">
+<label for="input2">Materia:</label>
+<input type="text" id="input2" placeholder="Ingresa una materia...">
+<button class="continuar" id="continuar-btn">Continuar</button>
+<button class="limpiar"  id="limpiar-btn">Limpiar Seleccion <span id = "seleccionados" > 0 seleccionados </span></button>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Codigo</th>
+<th>Materia</th>
+<th>Alerta</th>
+<th>Fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr data-id='1'>
+<td>A76</td>
+<td>ADMINISTRACION DE PRODUCCION Y OPERACIONES</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='12-05-2023'>12-05-2023</option>
+<option value='14-07-2023'>14-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='2'>
+<td>A510N</td>
+<td>ADMINISTRACION Y GESTION DE LAS ORGANIZACIONES DE ENSEÑANZA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='06-05-2023'>06-05-2023</option>
+<option value='08-07-2023'>08-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='3'>
+<td>A10</td>
+<td>ADMINISTRACION Y GESTION DE LAS ORGANIZACIONES I (DOBLE DICTADO)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='22-04-2023'>22-04-2023</option>
+<option value='06-05-2023'>06-05-2023</option>
+<option value='17-06-2023'>17-06-2023</option>
+<option value='01-07-2023'>01-07-2023</option>
+<option value='08-07-2023'>08-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='4'>
+<td>A73</td>
+<td>ADMINISTRACION Y GESTION EMPRESAS FAMILIARES</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='13-07-2023'>13-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='5'>
+<td>MC20</td>
+<td>ALGEBRA LINEAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='11-07-2023'>11-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='6'>
+<td>E11</td>
+<td>ANALISIS DE LAS INTERACCIONES ECONOMICAS  (DOBLE DICTADO)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='24-03-2023'>24-03-2023</option>
+<option value='13-05-2023'>13-05-2023</option>
+<option value='05-06-2023'>05-06-2023</option>
+<option value='15-07-2023'>15-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='7'>
+<td>E90</td>
+<td>ANALISIS ECONOMICO Y EVALUACION DE IMPACTO DE PROYECTOS Y PROGRAMAS (EX ANALISIS EC. DE PROY. DE INVERSION)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='06-05-2023'>06-05-2023</option>
+<option value='08-07-2023'>08-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='8'>
+<td>A50</td>
+<td>ANALISIS INSTITUCIONAL Y PLANIFICACION EN EL SECTOR PUBLICO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='29-03-2023'>29-03-2023</option>
+<option value='28-04-2023'>28-04-2023</option>
+<option value='02-06-2023'>02-06-2023</option>
+<option value='23-06-2023'>23-06-2023</option>
+<option value='12-07-2023'>12-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='9'>
+<td>C70</td>
+<td>AUDITORIA I</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='11-05-2023'>11-05-2023</option>
+<option value='13-07-2023'>13-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='10'>
+<td>I74</td>
+<td>BLOCKCHAIN Y CONTABILIDAD</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='06-07-2023'>06-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='11'>
+<td>114A</td>
+<td>CALCULO I/A (*) (DOBLE DICTADO)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='15-04-2023'>15-04-2023</option>
+<option value='02-05-2023'>02-05-2023</option>
+<option value='10-06-2023'>10-06-2023</option>
+<option value='04-07-2023'>04-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='12'>
+<td>128A</td>
+<td>CALCULO I/B  (*) (DOBLE DICTADO)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='02-05-2023'>02-05-2023</option>
+<option value='04-07-2023'>04-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='13'>
+<td>MC10</td>
+<td>CALCULO I (DOBLE DICTADO)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='02-05-2023'>02-05-2023</option>
+<option value='04-07-2023'>04-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='14'>
+<td>MC31</td>
+<td>CALCULO II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='18-04-2023'>18-04-2023</option>
+<option value='08-05-2023'>08-05-2023</option>
+<option value='20-06-2023'>20-06-2023</option>
+<option value='10-07-2023'>10-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='15'>
+<td>340</td>
+<td>CIENCIA DE DATOS CON R (EX NUEVAS TEC.PARA EL ANALISIS ESTADISTICO DE DATOS)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='24-05-2023'>24-05-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='16'>
+<td>MC128</td>
+<td>COMPL.METODOS CUANTITATIVOS. II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='02-05-2023'>02-05-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='17'>
+<td>A70</td>
+<td>COMPORTAMIENTO ORGANIZACIONAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='20-05-2023'>20-05-2023</option>
+<option value='11-07-2023'>11-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='18'>
+<td>C10</td>
+<td>CONCEPTOS CONTABLES (DOBLE DICTADO)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='26-04-2023'>26-04-2023</option>
+<option value='09-05-2023'>09-05-2023</option>
+<option value='11-07-2023'>11-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='19'>
+<td>C73</td>
+<td>CONTABILIDAD BANCARIA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='03-05-2023'>03-05-2023</option>
+<option value='05-07-2023'>05-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='20'>
+<td>C30</td>
+<td>CONTABILIDAD GENERAL II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='15-04-2023'>15-04-2023</option>
+<option value='08-05-2023'>08-05-2023</option>
+<option value='10-07-2023'>10-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='21'>
+<td>C76</td>
+<td>CONTABILIDAD GERENCIAL AVANZADA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='10-05-2023'>10-05-2023</option>
+<option value='12-07-2023'>12-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='22'>
+<td>C75</td>
+<td>CONTABILIDAD SOCIAL Y AMBIENTAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='06-05-2023'>06-05-2023</option>
+<option value='08-07-2023'>08-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='23'>
+<td>C74</td>
+<td>CONTABILIDAD SUPERIOR II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='08-05-2023'>08-05-2023</option>
+<option value='10-07-2023'>10-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='24'>
+<td>C31</td>
+<td>COSTOS PARA LA GESTION</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='06-07-2023'>06-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='25'>
+<td>J30</td>
+<td>DERECHO COMERCIAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='12-05-2023'>12-05-2023</option>
+<option value='14-07-2023'>14-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='26'>
+<td>J21</td>
+<td>DERECHO DEL EMPRESARIO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='12-05-2023'>12-05-2023</option>
+<option value='14-07-2023'>14-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='27'>
+<td>J50</td>
+<td>DERECHO TRIBUTARIO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='12-05-2023'>12-05-2023</option>
+<option value='14-07-2023'>14-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='28'>
+<td>MC70</td>
+<td>ECONOMETRIA II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='08-05-2023'>08-05-2023</option>
+<option value='10-07-2023'>10-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='29'>
+<td>E51</td>
+<td>ECONOMIA DE AMERICA LATINA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='13-05-2023'>13-05-2023</option>
+<option value='15-07-2023'>15-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='30'>
+<td>E53</td>
+<td>ECONOMIA DE LAS DECISIONES EMPRESARIALES</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='23-04-2023'>23-04-2023</option>
+<option value='11-05-2023'>11-05-2023</option>
+<option value='13-07-2023'>13-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='31'>
+<td>E70</td>
+<td>ECONOMIA INTERNACIONAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='03-05-2023'>03-05-2023</option>
+<option value='05-07-2023'>05-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='32'>
+<td>E75</td>
+<td>ECONOMIA PUBLICA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='02-05-2023'>02-05-2023</option>
+<option value='04-07-2023'>04-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='33'>
+<td>E77</td>
+<td>ECONOMIA Y GENERO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='06-07-2023'>06-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='34'>
+<td>E78</td>
+<td>ECONOMIA Y POLITICA MONETARIA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='11-05-2023'>11-05-2023</option>
+<option value='13-07-2023'>13-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='35'>
+<td>118</td>
+<td>ESTADISTICA DESCRIPTIVA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='11-05-2023'>11-05-2023</option>
+<option value='03-07-2023'>03-07-2023</option>
+<option value='13-07-2023'>13-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='36'>
+<td>MC51</td>
+<td>ESTADISTICA II (INFERENCIA ESTADISTICA)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='25-03-2023'>25-03-2023</option>
+<option value='08-05-2023'>08-05-2023</option>
+<option value='10-06-2023'>10-06-2023</option>
+<option value='10-07-2023'>10-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='37'>
+<td>MC52</td>
+<td>ESTADISTICA I - PR</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='01-04-2023'>01-04-2023</option>
+<option value='02-05-2023'>02-05-2023</option>
+<option value='10-06-2023'>10-06-2023</option>
+<option value='01-07-2023'>01-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='38'>
+<td>I52</td>
+<td>ETICA Y EJERCICIO PROFESIONAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='09-05-2023'>09-05-2023</option>
+<option value='11-07-2023'>11-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='39'>
+<td>A550</td>
+<td>EVALUACION INSTITUCIONAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='05-05-2023'>05-05-2023</option>
+<option value='07-07-2023'>07-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='40'>
+<td>A71</td>
+<td>FINANZAS CORPORATIVAS</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='02-05-2023'>02-05-2023</option>
+<option value='03-07-2023'>03-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='41'>
+<td>S82</td>
+<td>HISTORIA DEL PENSAMIENTO ECONOMICO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='07-07-2023'>07-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='42'>
+<td>S40</td>
+<td>HISTORIA ECONOMICA MUNDIAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='03-07-2023'>03-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='43'>
+<td>S513</td>
+<td>HISTORIA EVOLUCION Y ORGANIZACION DE LAS INSTITUCIONES UNIVERSITARAS</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='10-04-2023'>10-04-2023</option>
+<option value='24-04-2023'>24-04-2023</option>
+<option value='29-05-2023'>29-05-2023</option>
+<option value='12-06-2023'>12-06-2023</option>
+<option value='26-06-2023'>26-06-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='44'>
+<td>O33T</td>
+<td>INTRODUCCION A LA ECONOMIA DE LOS RECURSOS NATURALES (CUT POR VIDEOCONFERENCIA)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='05-07-2023'>05-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='45'>
+<td>E34</td>
+<td>INTRODUCCION A LA MACROECONOMIA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='10-05-2023'>10-05-2023</option>
+<option value='12-07-2023'>12-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='46'>
+<td>I51E</td>
+<td>INTRODUCCION A LA METODOLOGIA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='15-05-2023'>15-05-2023</option>
+<option value='07-07-2023'>07-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='47'>
+<td>E10</td>
+<td>INTRODUCCION A LA MICROECONOMIA (DOBLE DICTADO)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='21-04-2023'>21-04-2023</option>
+<option value='13-05-2023'>13-05-2023</option>
+<option value='15-07-2023'>15-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='48'>
+<td>O31T</td>
+<td>INTRODUCCION A LOS SISTEMAS DE PRODUCCION AGROPECUARIOS (CUT POR VIDEOCONFERENCIA)</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='10-05-2023'>10-05-2023</option>
+<option value='12-07-2023'>12-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='49'>
+<td>E30</td>
+<td>MACROECONOMIA I</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='29-04-2023'>29-04-2023</option>
+<option value='10-05-2023'>10-05-2023</option>
+<option value='12-07-2023'>12-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='50'>
+<td>E50</td>
+<td>MACROECONOMIA III</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='03-05-2023'>03-05-2023</option>
+<option value='05-07-2023'>05-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='51'>
+<td>A61</td>
+<td>MARKETING BASICO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='13-05-2023'>13-05-2023</option>
+<option value='15-07-2023'>15-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='52'>
+<td>A52</td>
+<td>MARKETING DE SERVICIOS</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='29-04-2023'>29-04-2023</option>
+<option value='13-05-2023'>13-05-2023</option>
+<option value='15-07-2023'>15-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='53'>
+<td>A77</td>
+<td>MARKETING DIGITAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='12-05-2023'>12-05-2023</option>
+<option value='14-07-2023'>14-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='54'>
+<td>MC30</td>
+<td>MATEMATICA FINANCIERA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='03-05-2023'>03-05-2023</option>
+<option value='07-07-2023'>07-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='55'>
+<td>E41</td>
+<td>MICROECONOMIA II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='27-04-2023'>27-04-2023</option>
+<option value='10-05-2023'>10-05-2023</option>
+<option value='31-05-2023'>31-05-2023</option>
+<option value='21-06-2023'>21-06-2023</option>
+<option value='12-07-2023'>12-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='56'>
+<td>I75</td>
+<td>MODELIZACION Y AUTOMATIZACION ROBOTICA DE PROCESOS</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='12-05-2023'>12-05-2023</option>
+<option value='14-07-2023'>14-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='57'>
+<td>333</td>
+<td>MODELOS LINEALES</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='11-05-2023'>11-05-2023</option>
+<option value='13-07-2023'>13-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='58'>
+<td>C50N</td>
+<td>MODELOS Y SISTEMAS DE COSTOS</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='06-07-2023'>06-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='59'>
+<td>335</td>
+<td>MUESTREO Y PLANIFICACION DE ENCUESTAS</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='08-05-2023'>08-05-2023</option>
+<option value='10-07-2023'>10-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='60'>
+<td>J514</td>
+<td>NORMATIVA UNIVERSITARIA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='11-05-2023'>11-05-2023</option>
+<option value='13-07-2023'>13-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='61'>
+<td>E91</td>
+<td>ORGANIZACION INDUSTRIAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='10-05-2023'>10-05-2023</option>
+<option value='12-07-2023'>12-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='62'>
+<td>S542N</td>
+<td>ORGANIZACION Y TRABAJO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='08-05-2023'>08-05-2023</option>
+<option value='05-06-2023'>05-06-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='63'>
+<td>S30</td>
+<td>POBLACION, ECONOMIA Y DESARROLLO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='03-05-2023'>03-05-2023</option>
+<option value='05-07-2023'>05-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='64'>
+<td>E79</td>
+<td>POLITICA ECONOMICA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='09-05-2023'>09-05-2023</option>
+<option value='11-07-2023'>11-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='65'>
+<td>230</td>
+<td>PROBABILIDAD I</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='01-04-2023'>01-04-2023</option>
+<option value='02-05-2023'>02-05-2023</option>
+<option value='10-06-2023'>10-06-2023</option>
+<option value='01-07-2023'>01-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='66'>
+<td>331</td>
+<td>PROBABILIDAD II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='04-05-2023'>04-05-2023</option>
+<option value='23-06-2023'>23-06-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='67'>
+<td>A30</td>
+<td>PROCESOS Y SISTEMAS DE INFORMACION</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='20-04-2023'>20-04-2023</option>
+<option value='06-05-2023'>06-05-2023</option>
+<option value='01-06-2023'>01-06-2023</option>
+<option value='22-06-2023'>22-06-2023</option>
+<option value='03-07-2023'>03-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='68'>
+<td>338N</td>
+<td>SEGUROS DE VIDA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='27-04-2023'>27-04-2023</option>
+<option value='27-06-2023'>27-06-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='69'>
+<td>462</td>
+<td>SERIES CRONOLOGICAS I</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='05-05-2023'>05-05-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='70'>
+<td>E33</td>
+<td>SISTEMAS DE DESC. MACROECONOMICA</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='13-05-2023'>13-05-2023</option>
+<option value='03-06-2023'>03-06-2023</option>
+<option value='15-07-2023'>15-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='71'>
+<td>I50</td>
+<td>TALLER DE ETICA Y RESPONSABILIDAD SOCIAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='08-07-2023'>08-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='72'>
+<td>MC54</td>
+<td>TALLER: INTRODUCCION A LA INFORMATICA SOCIAL Y VISUALIZACION DE DATOS</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='28-04-2023'>28-04-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='73'>
+<td>MC53</td>
+<td>TALLER "METODOS CUANTITATIVOS"</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='18-05-2023'>18-05-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='74'>
+<td>E71</td>
+<td>TEORIAS DEL DESARROLLO ECONOMICO</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='12-05-2023'>12-05-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='75'>
+<td>C82</td>
+<td>TRIBUTARIA II</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='05-05-2023'>05-05-2023</option>
+<option value='07-07-2023'>07-07-2023</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<script src="front_end/app.js"></script>
+<script>
+var selects = document.getElementsByTagName('select');
+for (var i = 0; i < selects.length; i++) {
+  selects[i].addEventListener('change', function() {
+    var selectedOption = this.options[this.selectedIndex];
+    var selectedDate = selectedOption.value;
+    var datesContainer = this.parentNode.querySelector('.dates-list');
+    var expandableIcon = this.parentNode.querySelector('.expandable');
+    expandableIcon.textContent = selectedDate;
+    datesContainer.classList.add('hidden');
+  });
+  selects[i].addEventListener('click', function(event) {
+    var datesContainer = this.parentNode.querySelector('.dates-list');
+    datesContainer.classList.toggle('hidden');
+    event.stopPropagation();
+  });
+  selects[i].addEventListener('focus', function(event) {
+    var fechaList = Array.from(this.options).map(function(option) {
+      return option.value;
+    });
+    fechaList.sort(function(a, b) {
+      return new Date(a) - new Date(b);
+    });
+    var selectedDate = this.value;
+    this.innerHTML = '';
+    for (var j = 0; j < fechaList.length; j++) {
+      var option = document.createElement('option');
+      option.value = fechaList[j];
+      option.textContent = fechaList[j];
+      this.appendChild(option);
+    }
+    this.value = selectedDate;
+  });
+}
+var datesContainers = document.getElementsByClassName('dates-list');
+for (var i = 0; i < datesContainers.length; i++) {
+  var datesContainer = datesContainers[i];
+  if (datesContainer.innerHTML.trim() === '') {
+    datesContainer.innerHTML = 'SIN DATO';
+  }
+}
+</script>
+</body>
+</html>
