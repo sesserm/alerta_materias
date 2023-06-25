@@ -15,5 +15,3 @@ front_end/node_modules
 # Ignore pycache
 codigo_python/__pycache__
 
-#Ignorar diagrama
-**/*.svg

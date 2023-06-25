@@ -17,7 +17,7 @@ En la actualidad, el proyecto contempla los siguientes tipos de evaluaciones:
 ## Diagrama de flujo 
 A continuación se presenta un diagrama de flujo de procesamiento con el propósito de facilitar la comprensión del funcionamiento del proyecto.
 
-![Diagrama de flujo](./diagrama-flujo.drawio.svg)
+![Diagrama de flujo](./assets/diagrama-flujo.drawio.svg)
 
 ## Periodicidad de ejecución
 En relación al diagrama de flujo previamente presentado, es importante destacar que el proyecto exhibe diversas periodicidades en su ejecución, las cuales están sujetas a la naturaleza de las tareas involucradas. 
