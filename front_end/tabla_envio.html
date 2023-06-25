@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genera tu alerta</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="envio.css">
+    
+</head>
+<body>
+  <div class="container">
+    <button class="limpiar volver"  id="limpiar-btn" onclick="volverPagina()">Volver</button>
+  <table id="tabla-envio">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Materia</th>
+        <th>Fecha Materia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- aquí se añadirán las filas de la tabla dinámicamente a partir del archivo datos_envio.js -->
+    </tbody>
+  </table>
+  <div class="email-container">
+    <label for="email">Correo electrónico a notificar:</label>
+     <input type="email" id="email" name="email" placeholder="Escribe tu correo electrónico aquí" required>
+  </div>
+  <button class="btn-enviar" id="enviar-btn" onclick="validarFormulario()">Enviar</button>
+  </div>
+
+  <script src="datos_envio.js"></script>
+  <script>
+		function volverPagina() {
+		  window.history.back();
+		}
+	</script>
+</body>
+</html>

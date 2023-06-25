@@ -1,0 +1,147 @@
+body {
+    background-color: #222;
+    color: #fff;
+}
+
+.filtro {
+    display: inline-block;
+}
+
+.filtros-container {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+table {
+    margin: 0 auto;
+    text-align: left;
+    user-select: none;
+    font-size: 16px;
+    border-collapse: collapse;
+}
+
+table tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+    color: black;
+}
+
+th {
+    cursor: default;
+    color: white;
+}
+
+th,
+.filtro label {
+    font-size: 1.2rem;
+}
+
+th,
+td {
+    border: 1px solid #444;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+th {
+    background-color: #555;
+}
+
+tr:nth-child(even) {
+    background-color: #333;
+}
+
+/* Estilo inputs */
+#input1,
+#input2 {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#input1 {
+    width: 200px;
+}
+
+#input2 {
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+button:hover {
+    background-color: #3e8e41;
+    cursor: pointer;
+}
+
+button.limpiar {
+    background-color: #f44336;
+}
+
+button.limpiar:hover {
+    background-color: #c62828;
+}
+
+.fila-seleccionada {
+    background-color: #d9f7be;
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    /* Estilos para pantallas con ancho menor a 600px */
+
+    .container {
+        flex-direction: column;
+    }
+
+    .filtros-container {
+        margin-bottom: 10px;
+    }
+
+    .filtro {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .filtro input[type="text"] {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    table {
+        font-size: 0.8rem;
+    }
+}
