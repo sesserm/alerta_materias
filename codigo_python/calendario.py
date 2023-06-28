@@ -2,6 +2,7 @@ from utilidad import *
 import psycopg2
 from psycopg2 import sql
 import datetime
+from db import open_connection
 
 URL = 'https://fcea.udelar.edu.uy/horarios-y-calendarios/examenes-y-revisiones/calendario-de-pruebas/calendarios/6756-calendario-de-pruebas-del-primer-semestre-de-2023.html'
 
@@ -135,13 +136,14 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
 
     # Me conecto a la base
     try:
-        conn = psycopg2.connect(
-            database=variables_entorno.get('PGDATABASE'),
-            user=variables_entorno.get('PGUSER'),
-            password=variables_entorno.get('PGPASSWORD'),
-            host=variables_entorno.get('PGHOST'),
-            port=variables_entorno.get('PGPORT')
-        )
+        conn = open_connection()
+    #    conn = psycopg2.connect(
+    #        database=variables_entorno.get('PGDATABASE'),
+    #        user=variables_entorno.get('PGUSER'),
+    #        password=variables_entorno.get('PGPASSWORD'),
+    #        host=variables_entorno.get('PGHOST'),
+    #        port=variables_entorno.get('PGPORT'))
+    #
     except psycopg2.DatabaseError as error:
         print(f"Ha ocurrido un error al conectar a la base de datos: {error}")
         destinatarios = [variables_entorno.get('MAIL')]
