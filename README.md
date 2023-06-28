@@ -66,7 +66,7 @@ Esto fue una decisión tomada luego de ponderar los costos de implementación (d
 ### Medio de notificación
 En la actualidad, se ha considerado únicamente el correo electrónico como medio de notificación. Si bien este medio brinda mayor seguridad y confianza al usuario al solicitar una alerta, se reconoce que otros medios, como los mensajes al móvil, ofrecen una mayor comodidad. Por consiguiente, se contempla la incorporación de esta funcionalidad en futuras versiones del sistema.
 
-## Proximamente
+## Próximamente
 Las modificaciones efectuadas al proyecto se encuentran sujetas al feedback proporcionado por el usuario. Sin obviar este aspecto, se tiene previsto incorporar nuevas características con el propósito primordial de subsanar las limitaciones identificadas en la sección anterior. A continuación, se exponen detalladamente las modificaciones que se persigue llevar a cabo:
 -  Habilitar la notificación vía móvil
 -  Incorporar los exámenes dentro de las asignaturas a notificar
