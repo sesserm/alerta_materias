@@ -12,6 +12,7 @@ import requests
 from bs4 import BeautifulSoup
 import collections
 collections.Callable = collections.abc.Callable
+from db import mail, passmail
 
 def quitar_acentos(texto):
     # Definir los caracteres acentuados y sus correspondientes caracteres sin acento
@@ -51,9 +52,9 @@ def enviar_correo(destinatarios, asunto, mensaje):
     servidor_smtp = 'smtp.gmail.com'
     puerto_smtp = 587
     #Obtengo variables de entorno 
-    variables_entorno = obtener_var_entorno()
-    remitente = variables_entorno.get('MAIL')
-    contraseña = variables_entorno.get('PASSMAIL')
+    #variables_entorno = obtener_var_entorno()
+    remitente = mail()
+    contraseña = passmail()
 
     # Crear el objeto de mensaje
     msg = MIMEMultipart()

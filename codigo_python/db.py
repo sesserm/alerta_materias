@@ -22,6 +22,9 @@ def mail():
     return config("MAIL").__str__()
 
 
+def passmail():
+    return config("PASSMAIL").__str__()
+
 def execute_insert_update(sql):
 
     try:
