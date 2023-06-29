@@ -4,7 +4,7 @@ import psycopg2
 import numpy as np
 from dotenv import load_dotenv
 from utilidad import enviar_correo, obtener_var_entorno
-from db import open_connection
+from db import open_connection, mail
 
 filename_economia = "./materias_economia.csv"
 filename_contador = "./materias_contador.csv"
@@ -126,7 +126,7 @@ else:
         diff_set1 = my_set_cargado.difference(my_set_comparar)
         if len(diff_set1) == 0:
             print('Los dataframes son iguales')
-            destinatarios = [variables_entorno.get('MAIL')]
+            destinatarios = [mail()]
             asunto = 'STATUS CORRECTO - PROYECTO ALERTA-FCEA '
             mensaje = f'Se mantienen las mismas materias de las grillas que desde la ultima vez.'
             enviar_correo(destinatarios, asunto, mensaje)
