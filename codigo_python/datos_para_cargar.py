@@ -4,6 +4,7 @@ import psycopg2
 import numpy as np
 from dotenv import load_dotenv
 from utilidad import enviar_correo, obtener_var_entorno
+from db import open_connection
 
 filename_economia = "./materias_economia.csv"
 filename_contador = "./materias_contador.csv"
