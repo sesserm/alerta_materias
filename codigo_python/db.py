@@ -18,6 +18,9 @@ def open_connection():
 
     )
 
+def mail():
+    return config("MAIL").__str__()
+
 
 def execute_insert_update(sql):
 
