@@ -2,7 +2,7 @@ from utilidad import *
 import psycopg2
 from psycopg2 import sql
 import datetime
-from db import open_connection
+from db import open_connection, mail
 
 URL = 'https://fcea.udelar.edu.uy/horarios-y-calendarios/examenes-y-revisiones/calendario-de-pruebas/calendarios/6756-calendario-de-pruebas-del-primer-semestre-de-2023.html'
 
@@ -43,7 +43,7 @@ for row in rows:
             #print(fecha)
             fechas.append(fecha)
         else:
-            destinatarios = [variables_entorno.get('MAIL')]
+            destinatarios = [mail()]
             asunto = 'ERROR - PROYECTO ALERTA-FCEA '
             mensaje = 'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo.'
             enviar_correo(destinatarios, asunto, mensaje)
@@ -146,7 +146,7 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
     #
     except psycopg2.DatabaseError as error:
         print(f"Ha ocurrido un error al conectar a la base de datos: {error}")
-        destinatarios = [variables_entorno.get('MAIL')]
+        destinatarios = [mail()]
         asunto = 'ERROR - PROYECTO ALERTA-FCEA '
         mensaje = f'No se pudo conectar a la base en el script de calendario.'
         enviar_correo(destinatarios, asunto, mensaje)
@@ -174,7 +174,7 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
             cursor.close()
             conn.close()
         except:
-            destinatarios = [variables_entorno.get('MAIL')]
+            destinatarios = [mail()]
             asunto = 'ERROR - PROYECTO ALERTA-FCEA '
             mensaje = f'Error al hacer la carga de calendario. Error en el insert.\n\n{row}'
             enviar_correo(destinatarios, asunto, mensaje)
@@ -229,7 +229,7 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
                         cursor.execute(delete_query)
                         conn.commit()
                     except:
-                        destinatarios = [variables_entorno.get('MAIL')]
+                        destinatarios = [mail()]
                         asunto = 'ERROR - PROYECTO ALERTA-FCEA '
                         mensaje = f'Error al mover los datos a la tabla historica.'
                         enviar_correo(destinatarios, asunto, mensaje)
@@ -240,7 +240,7 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
             conn.close()
 
         except:
-            destinatarios = [variables_entorno.get('MAIL')]
+            destinatarios = [mail()]
             asunto = 'ERROR - PROYECTO ALERTA-FCEA '
             mensaje = f'Error al borrar y volver a cargar los datos del calendario.'
             enviar_correo(destinatarios, asunto, mensaje)

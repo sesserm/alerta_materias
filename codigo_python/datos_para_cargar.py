@@ -68,7 +68,7 @@ try:
   #  )
 except psycopg2.DatabaseError as error:
     print(f"Ha ocurrido un error al conectar a la base de datos: {error}")
-    destinatarios = [variables_entorno.get('MAIL')]
+    destinatarios = [mail()]
     asunto = 'ERROR - PROYECTO ALERTA-FCEA '
     mensaje = f'No se pudo conectar a la base en el script de calendario.'
     enviar_correo(destinatarios, asunto, mensaje)
@@ -114,7 +114,7 @@ else:
             for codigo, materia in diff_tuple2:
                 items_faltantes.append([codigo, materia])    
         print(items_faltantes)
-        destinatarios = [variables_entorno.get('MAIL')]
+        destinatarios = [mail()]
         asunto = 'ERROR - PROYECTO ALERTA-FCEA '
         mensaje = f'Error al hacer la carga del listado de materias. Dataframes no tienen el mismo len\n\nSe tienen los siguientes items faltantes (es un set por lo que puede no estar ordenado el codigo y materia):\n\n{items_faltantes}\n\nRecorda que puede ser que falten scrapear items o sean materias que las sacaron\n\nPara determinar esto: Si la materia esta en DW, entonces la sacaron y hay que quitarla. Si la materia no esta en DW falta scrapear y se debe agregar'
         enviar_correo(destinatarios, asunto, mensaje)   
@@ -147,7 +147,7 @@ else:
                 cursor.close()
                 conn.close()
             except:
-                destinatarios = [variables_entorno.get('MAIL')]
+                destinatarios = [mail()]
                 asunto = 'STATUS - PROYECTO ALERTA-FCEA'
                 mensaje = f'El scrapeo vino con la misma cantidad de lineas que lo que ya estaba pero tienen alguna variacion de nombre.\n\n{diff_set1}\n\nSe sobreesribe con la nueva version.'
                 enviar_correo(destinatarios, asunto, mensaje)
