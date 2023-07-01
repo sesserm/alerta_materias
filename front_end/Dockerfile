@@ -20,19 +20,20 @@ WORKDIR /usr/src/
 
 COPY . .
 
-COPY ../codigo_python/requirements.txt .
+COPY codigo_python/requirements.txt .
 
-COPY ../codigo_python/db.py .
+COPY codigo_python/db.py .
 
 RUN npm install
 
 # Instalar las dependencias de Python
 RUN apk add --no-cache python3 python3-dev \
     && pip3 install --upgrade pip \
-    && pip3 install -r /usr/src/requirements.txt
+    && pip3 install -r requirements.txt
 
 RUN /bin/sh -c "apk add --no-cache bash"
 
 CMD ["bash"]
+
 
 
