@@ -2,7 +2,7 @@ const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
 const dotenv = require("dotenv");
-dotenv.config({ path: '../.env' });
+dotenv.config();
 const nodemailer = require('nodemailer');
 
 
