@@ -14,16 +14,16 @@
 
 FROM node:19-alpine3.16
 
-RUN mkdir -p /usr/src/
-
 WORKDIR /usr/src/
 
+# Copiar el código del front-end
 COPY . .
 
-COPY codigo_python/requirements.txt .
+# Copiar el archivo requirements.txt al contenedor
+COPY ../codigo_python/requirements.txt .
+COPY ../codigo_python/base.py .
 
-COPY codigo_python/db.py .
-
+# Instalar las dependencias de npm
 RUN npm install
 
 # Instalar las dependencias de Python
@@ -34,6 +34,7 @@ RUN apk add --no-cache python3 python3-dev \
 RUN /bin/sh -c "apk add --no-cache bash"
 
 CMD ["bash"]
+
 
 
 
