@@ -115,5 +115,5 @@ app.post('/guardar-datos', (req, res) => {
 });
 
 app.listen(port, () => {
-  //console.log(`Servidor Node.js en ejecución en http://localhost:${port}`);
+  console.log(`Servidor Node.js en ejecución en http://localhost:${port}`);
 });
