@@ -5,6 +5,7 @@ import json
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+from ..codigo_python.db import open_connection, mail
 
 # Obtén la ruta absoluta del archivo actual
 current_file = os.path.abspath(__file__)
@@ -20,13 +21,22 @@ load_dotenv(dotenv_path=env_path)
 
 # Conectarse a la base de datos
 # Luego utilizar la version modularizada de Mauro (v.ent en el servidor)
-conn = psycopg2.connect(
-    host= os.environ.get('PGHOST'),
-    database= os.environ.get('PGDATABASE'),
-    user= os.environ.get('PGUSER'),
-    password= os.environ.get('PGPASSWORD'),
-    port= os.environ.get('PGPORT')
-)
+#conn = psycopg2.connect(
+#    host= os.environ.get('PGHOST'),
+#    database= os.environ.get('PGDATABASE'),
+#    user= os.environ.get('PGUSER'),
+#    password= os.environ.get('PGPASSWORD'),
+#    port= os.environ.get('PGPORT')
+#)
+
+try:
+    conn = open_connection()
+except psycopg2.DatabaseError as error:
+        destinatarios = [mail()]
+        asunto = 'ERROR - PROYECTO ALERTA-FCEA '
+        mensaje = f'No se pudo conectar a la base en el script que genera el index.html.'
+        enviar_correo(destinatarios, asunto, mensaje)
+
 # Crear un cursor
 cur = conn.cursor()
 cur2 = conn.cursor()
