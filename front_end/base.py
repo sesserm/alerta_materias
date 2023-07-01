@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 import os
 from dotenv import load_dotenv
-from ..codigo_python.db import open_connection, mail
+#from ..codigo_python.db import open_connection, mail
 
 # Obtén la ruta absoluta del archivo actual
 current_file = os.path.abspath(__file__)
@@ -20,22 +20,22 @@ env_path = os.path.join(parent_dir, '.env')
 load_dotenv(dotenv_path=env_path)
 
 # Conectarse a la base de datos
-# Luego utilizar la version modularizada de Mauro (v.ent en el servidor)
-#conn = psycopg2.connect(
-#    host= os.environ.get('PGHOST'),
-#    database= os.environ.get('PGDATABASE'),
-#    user= os.environ.get('PGUSER'),
-#    password= os.environ.get('PGPASSWORD'),
-#    port= os.environ.get('PGPORT')
-#)
+# Luego utilizar la version produccion (v.ent en el servidor)
+conn = psycopg2.connect(
+    host= os.environ.get('PGHOST'),
+    database= os.environ.get('PGDATABASE'),
+    user= os.environ.get('PGUSER'),
+    password= os.environ.get('PGPASSWORD'),
+    port= os.environ.get('PGPORT')
+)
 
-try:
-    conn = open_connection()
-except psycopg2.DatabaseError as error:
-        destinatarios = [mail()]
-        asunto = 'ERROR - PROYECTO ALERTA-FCEA '
-        mensaje = f'No se pudo conectar a la base en el script que genera el index.html.'
-        enviar_correo(destinatarios, asunto, mensaje)
+#try:
+#    conn = open_connection()
+#except psycopg2.DatabaseError as error:
+#        destinatarios = [mail()]
+#        asunto = 'ERROR - PROYECTO ALERTA-FCEA '
+#        mensaje = f'No se pudo conectar a la base en el script que genera el index.html.'
+#        enviar_correo(destinatarios, asunto, mensaje)
 
 # Crear un cursor
 cur = conn.cursor()
@@ -123,56 +123,9 @@ output.write("</tbody>\n")
 output.write("</table>\n")
 output.write("</div>\n")
 output.write("<script src=\"front_end/app.js\"></script>\n")
-output.write("<script>\n")
-output.write("var selects = document.getElementsByTagName('select');\n")
-output.write("for (var i = 0; i < selects.length; i++) {\n")
-output.write("  selects[i].addEventListener('change', function() {\n")
-output.write("    var selectedOption = this.options[this.selectedIndex];\n")
-output.write("    var selectedDate = selectedOption.value;\n")
-output.write(
-    "    var datesContainer = this.parentNode.querySelector('.dates-list');\n")
-output.write(
-    "    var expandableIcon = this.parentNode.querySelector('.expandable');\n")
-output.write("    expandableIcon.textContent = selectedDate;\n")
-output.write("    datesContainer.classList.add('hidden');\n")
-output.write("  });\n")
-output.write("  selects[i].addEventListener('click', function(event) {\n")
-output.write(
-    "    var datesContainer = this.parentNode.querySelector('.dates-list');\n")
-output.write("    datesContainer.classList.toggle('hidden');\n")
-output.write("    event.stopPropagation();\n")
-output.write("  });\n")
-output.write("  selects[i].addEventListener('focus', function(event) {\n")
-output.write(
-    "    var fechaList = Array.from(this.options).map(function(option) {\n")
-output.write("      return option.value;\n")
-output.write("    });\n")
-output.write("    fechaList.sort(function(a, b) {\n")
-output.write("      return new Date(a) - new Date(b);\n")
-output.write("    });\n")
-output.write("    var selectedDate = this.value;\n")
-output.write("    this.innerHTML = '';\n")
-output.write("    for (var j = 0; j < fechaList.length; j++) {\n")
-output.write("      var option = document.createElement('option');\n")
-output.write("      option.value = fechaList[j];\n")
-output.write("      option.textContent = fechaList[j];\n")
-output.write("      this.appendChild(option);\n")
-output.write("    }\n")
-output.write("    this.value = selectedDate;\n")
-output.write("  });\n")
-output.write("}\n")
-output.write(
-    "var datesContainers = document.getElementsByClassName('dates-list');\n")
-output.write("for (var i = 0; i < datesContainers.length; i++) {\n")
-output.write("  var datesContainer = datesContainers[i];\n")
-output.write("  if (datesContainer.innerHTML.trim() === '') {\n")
-output.write("    datesContainer.innerHTML = 'SIN DATO';\n")
-output.write("  }\n")
-output.write("}\n")
-output.write("</script>\n")
+output.write("<script src=\"front_end/estructura_fecha.js\"></script>\n")
 output.write("</body>\n")
 output.write("</html>\n")
-
 
 # Escribir la cadena de texto en un archivo HTML
 with open("../index.html", "w", encoding="utf-8") as f:
