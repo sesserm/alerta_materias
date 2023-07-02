@@ -23,12 +23,13 @@ COPY . .
 RUN npm install
 
 # Instalar las dependencias de Python
-RUN apk add --no-cache python3 python3-dev \
-    pip install --no-cache-dir -r requirements.txt
+RUN apk add --no-cache python
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN /bin/sh -c "apk add --no-cache bash"
+RUN apk add --no-cache bash
 
 CMD ["bash"]
+
 
 
 
