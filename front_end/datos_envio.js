@@ -1,10 +1,10 @@
+// Se traen los datos a ingresar en el DW
 const datosSeleccionados = JSON.parse(localStorage.getItem('datosSeleccionados'));
-//console.log(datosSeleccionados)
 
+//  Envio el formulario al servidor
 const formulario = {};
 let puerto = 3000
 function enviarDatos(formulario) {
-  // Enviar el formulario al servidor
   fetch(`http://localhost:${puerto}/guardar-datos`, {
     method: 'POST',
     headers: {
@@ -21,7 +21,6 @@ function enviarDatos(formulario) {
       }
     })
     .catch((error) => {
-      //console.error('Error al enviar los datos:', error);
       alert('Error al guardar los datos');
     });
 }
@@ -61,7 +60,7 @@ function validarFormulario() {
     return false;
   }
 
-  // enviar formulario si el correo electrónico es válido
+  // Enviar formulario si el correo electrónico es válido
   for (const codigo in formulario) {
     if (formulario.hasOwnProperty(codigo)) {
       if (emailValue.includes('@')) {
@@ -70,15 +69,10 @@ function validarFormulario() {
         formulario[codigo].medio = "MOVIL";
       }
       formulario[codigo].email = emailValue;
-      //console.log(formulario)
-      //console.log(`Código: ${codigo}, Materia: ${formulario[codigo].materia}, Email: ${formulario[codigo].email}, Medio: ${formulario[codigo].medio}, Fecha: ${formulario[codigo].fecha}`);
     }
   }
-//console.log(formulario)
-enviarDatos(formulario);
 
-  // Aquí ya podrías enviar el formulario al servidor o hacer lo que necesites con los datos guardados en "formulario"
-  /*return true;*/
+enviarDatos(formulario);
 }
 
 
