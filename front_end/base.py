@@ -1,3 +1,4 @@
+# Importo librerias a utilizar
 import io
 import psycopg2
 import pandas as pd
@@ -5,48 +6,24 @@ import json
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+#from ..codigo_python.utilidad import *
 #from ..codigo_python.db import open_connection, mail
 
-# Obtén la ruta absoluta del archivo actual
-current_file = os.path.abspath(__file__)
-
-# Obtén el directorio padre de la ruta del archivo
-parent_dir = os.path.dirname(os.path.dirname(current_file))
-
-# Concatena la ruta relativa al archivo .env
-env_path = os.path.join(parent_dir, '.env')
-
-# Carga las variables de entorno desde el archivo .env
-load_dotenv(dotenv_path=env_path)
-
 # Conectarse a la base de datos
-# Luego utilizar la version produccion (v.ent en el servidor)
-conn = psycopg2.connect(
-    host= os.environ.get('PGHOST'),
-    database= os.environ.get('PGDATABASE'),
-    user= os.environ.get('PGUSER'),
-    password= os.environ.get('PGPASSWORD'),
-    port= os.environ.get('PGPORT')
-)
+try:
+    conn = open_connection()
+except psycopg2.DatabaseError as error:
+        DESTINATARIOS = [mail()]
+        ASUNTO = 'ERROR - PROYECTO ALERTA-FCEA '
+        MENSAJE = f'No se pudo conectar a la base en el script de base.py.'
+        enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)
 
-#try:
-#    conn = open_connection()
-#except psycopg2.DatabaseError as error:
-#        destinatarios = [mail()]
-#        asunto = 'ERROR - PROYECTO ALERTA-FCEA '
-#        mensaje = f'No se pudo conectar a la base en el script que genera el index.html.'
-#        enviar_correo(destinatarios, asunto, mensaje)
-
-# Crear un cursor
+# Obtengo la informacion para generar el HTML
 cur = conn.cursor()
 cur2 = conn.cursor()
-
-# Ejecutar una consulta
 cur.execute(
     "SELECT codigo, materia FROM alerta_facultad.dim_materias order by materia")
 cur2.execute("SELECT codigo, fecha FROM alerta_facultad.calendario")
-
-# Obtener los resultados
 rows = cur.fetchall()
 rows2 = cur2.fetchall()
 dates_dict = {}
@@ -58,9 +35,8 @@ for item in rows2:
         dates_dict[codigo].append(fecha)
     else:
         dates_dict[codigo] = [fecha]
-#print(dates_dict)
 
-# Crear una cadena de texto en formato HTML
+# Renderizado del HTML principal
 output = io.StringIO()
 output.write("<!DOCTYPE html>\n")
 output.write("<html>\n")
@@ -75,7 +51,6 @@ output.write("<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"assets/app
 output.write("<link rel=\"icon\" sizes=\"32x32\" type=\"image/png\" href=\"assets/favicon-32x32.png\">\n")
 output.write("<link rel=\"icon\" sizes=\"16x16\" type=\"image/png\" href=\"assets/favicon-16x16.png\">\n")
 output.write("<link rel=\"manifest\" href=\"assets/site.webmanifest\">\n")
-
 output.write("</head>\n")
 output.write("<body>\n")
 output.write("<div class=\"container\">\n")
@@ -101,11 +76,11 @@ output.write("<tr>\n")
 output.write("<th>Codigo</th>\n")
 output.write("<th>Materia</th>\n")
 output.write("<th>Alerta</th>\n")
-output.write("<th>Fecha</th>\n")  # add a new column
+output.write("<th>Fecha</th>\n") 
 output.write("</tr>\n")
 output.write("</thead>\n")
 output.write("<tbody>\n")
-id_counter = 1  # start with id 1
+id_counter = 1  
 for row in rows:
     codigo = row[0]
     fecha_list = dates_dict.get(codigo, "SIN DATO")
@@ -123,7 +98,7 @@ for row in rows:
         output.write("</select>\n")
         output.write("</td>\n")
         output.write("</tr>\n")
-        id_counter += 1  # increment the id counter
+        id_counter += 1  
 output.write("</tbody>\n")
 output.write("</table>\n")
 output.write("</div>\n")
@@ -132,11 +107,10 @@ output.write("<script src=\"front_end/estructura_fecha.js\"></script>\n")
 output.write("</body>\n")
 output.write("</html>\n")
 
-# Escribir la cadena de texto en un archivo HTML
+# Escribo el HTML en root
 with open("../index.html", "w", encoding="utf-8") as f:
     f.write(output.getvalue())
 
-# Cerrar el cursor y la conexión a la base de datos
 cur.close()
 cur2.close()
 conn.close()

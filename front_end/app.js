@@ -1,3 +1,4 @@
+// Selecciono los elementos
 const input1 = document.getElementById('input1');
 const input2 = document.getElementById('input2');
 const table = document.querySelector('table');
@@ -46,19 +47,12 @@ function actualizarCantidadSeleccionada() {
       }
     }
   });
-
-
-
   
   // Ordena las filas por estado de selección
   ordenarFilas();
 
-  botonLimpiar.innerText = `Limpiar Seleccion (${cantidadSeleccionada}) seleccionados`;
-  //console.log(filasSeleccionadas);
-  
+  botonLimpiar.innerText = `Limpiar Seleccion (${cantidadSeleccionada}) seleccionados`;  
 }
-
-
 
 // Agrega un event listener para el evento `click` en cada fila de la tabla
 const filas = document.querySelectorAll("tbody tr");
@@ -79,8 +73,6 @@ filas.forEach((fila) => {
       actualizarCantidadSeleccionada();
     }
   });
-
-
   
   // Manejador de clic para el checkbox
   const checkbox = fila.querySelector("input[type='checkbox']");
@@ -90,15 +82,11 @@ filas.forEach((fila) => {
   });
 });
 
-
-
 // Agrega un event listener para el evento `change` en cada checkbox
 const checkboxes = table.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', actualizarCantidadSeleccionada);
 });
-
-
 
 // Define la función de filtrado
 function filtrarTabla() {
@@ -140,8 +128,8 @@ continuarBtn.addEventListener('click', () => {
       const fila = checkbox.closest('tr');
       const codigo = fila.cells[0].textContent.trim();
       const materia = fila.cells[1].textContent.trim();
-      const selectElement = fila.querySelector("select"); // Get the select element
-      const selectedDate = selectElement.value; // Get the selected date from the select element
+      const selectElement = fila.querySelector("select"); // Obtiene el elemento select
+      const selectedDate = selectElement.value; // Obtiene la fecha seleccionada del elemento
 
       datosSeleccionados[codigo] = {
         materia: materia,
@@ -152,13 +140,11 @@ continuarBtn.addEventListener('click', () => {
 
   localStorage.setItem('datosSeleccionados', JSON.stringify(datosSeleccionados));
   if (Object.keys(datosSeleccionados).length === 0) {
-  alert('Por favor selecciona al menos una materia para continuar')
+  alert('Por favor selecciona al menos una materia para continuar.')
 } else {
   window.location.href = 'front_end/tabla_envio.html';
 }
-  
 });
-
 
 botonLimpiar.addEventListener('click', () => {
   const checkboxes = table.querySelectorAll('input[type="checkbox"]');
@@ -179,4 +165,3 @@ window.addEventListener('load', () => {
     checkbox.checked = false;
   });
 });
-
