@@ -1,12 +1,14 @@
+# Importo librerias a utilizar
 from utilidad import *
+from db import mail
 
+# Realizo el scrapeo
 URL = 'https://fcea.udelar.edu.uy/depto-adm-ensenanza/tecnicatura-admin-ciencias-adm.html'
-response = requests.get(URL)
-
+response = requests.get(URL, timeout=120)
 soup = BeautifulSoup(response.content, 'html.parser')
-
 table = soup.find('table', {'class': 'table_curricular'})
 
+# Procesamiento para incorporar la data en un DF
 for data_materia in table.find_all('tbody'):
     rows = data_materia.find_all('tr')
 
@@ -23,12 +25,7 @@ for row in rows:
         semestre = quitar_acentos(semestre)
         semestres.append(semestre)
 
-print(len(codigos), len(semestres))
-# PARA USAR LA FUNCION ZIP, TIENEN QUE EXISTIR LA MISMA CANTIDAD DE CODIGOS Y SEMESTRES
-
-#Obtengo variable de entorno
-variables_entorno = obtener_var_entorno()
-
+# Genero archivo para cargar
 if len(codigos) == len(semestres):
     datos = zip(codigos, semestres)
     df = pd.DataFrame(datos, columns=["CODIGO", "MATERIA"])
@@ -36,11 +33,11 @@ if len(codigos) == len(semestres):
     df_filtrado = df[mask]
     df_filtrado.drop(df_filtrado[df_filtrado['CODIGO'] == ''].index, inplace=True)
     df_filtrado.drop(df_filtrado[df_filtrado['MATERIA'] == ''].index, inplace=True)
-
     df_filtrado.to_csv('./materias_tecnologo_admin.csv', index=False)
+
+# Alerta en caso de error de scrapeo
 else:
-    # MANDAR MAIL DE ERROR EN ESTA MATERIA
-    destinatarios = [variables_entorno.get('MAIL')]
-    asunto = 'ERROR - PROYECTO ALERTA-FCEA '
-    mensaje = 'Error al hacer el scraping de las materias de: Tecnicatura en Administración.\n\nCambió algún formato que originó un error en el scrapeo.'
-    enviar_correo(destinatarios, asunto, mensaje)
+    DESTINATARIOS = [mail()]
+    ASUNTO = 'ERROR - PROYECTO ALERTA-FCEA '
+    MENSAJE = 'Error al hacer el scraping de las materias de: Tecnicatura en Administración.\n\nCambió algún formato que originó un error en el scrapeo.'
+    enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)

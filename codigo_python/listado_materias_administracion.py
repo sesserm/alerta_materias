@@ -1,20 +1,21 @@
+# Importo librerias a utilizar
 from utilidad import *
+from db import mail
 
+# Realizo el scrapeo
 URL = 'https://fcea.udelar.edu.uy/depto-adm-ensenanza/lic-adm-ciencias-adm.html'
-response = requests.get(URL)
-
+response = requests.get(URL, timeout=120)
 soup = BeautifulSoup(response.content, 'html.parser')
-
 table = soup.find('table', {'class': 'table_curricular'})
-
 tbodies = table.find_all('tbody')
 
-# Obtén la primera tabla
+# Obtengo la primera tabla
 tabla_1 = tbodies[0]
 
 # Obtén la segunda tabla
 tabla_2 = tbodies[1]
 
+# Procesamiento para incorporar la data en un DF
 codigos = list()
 semestres = list()
 
@@ -36,12 +37,7 @@ for tr in tabla_2.find_all('tr'):
     semestre = quitar_acentos(semestre)
     semestres.append(semestre)
 
-print(len(codigos), len(semestres))
-# PARA USAR LA FUNCION ZIP, TIENEN QUE EXISTIR LA MISMA CANTIDAD DE CODIGOS Y SEMESTRES
-
-# Obtengo variables de entorno a nivel global
-variables_entorno = obtener_var_entorno()
-
+# Genero archivo para cargar
 if len(codigos) == len(semestres):
     datos = zip(codigos, semestres)
     df = pd.DataFrame(datos, columns=["CODIGO", "MATERIA"])
@@ -49,11 +45,11 @@ if len(codigos) == len(semestres):
     df_filtrado = df[mask]
     df_filtrado.drop(df_filtrado[df_filtrado['CODIGO'] == ''].index, inplace=True)
     df_filtrado.drop(df_filtrado[df_filtrado['MATERIA'] == ''].index, inplace=True)
-
     df_filtrado.to_csv('./materias_administracion.csv', index=False)
 
+# Alerta en caso de error de scrapeo    
 else:
-    destinatarios = [variables_entorno.get('MAIL')]
-    asunto = 'ERROR - PROYECTO ALERTA-FCEA '
-    mensaje = 'Error al hacer el scraping de las materias de: Licenciatura en Administración.\n\nCambió algún formato que originó un error en el scrapeo.'
-    enviar_correo(destinatarios, asunto, mensaje)
+    DESTINATARIOS = [mail()]
+    ASUNTO = 'ERROR - PROYECTO ALERTA-FCEA '
+    MENSAJE = 'Error al hacer el scraping de las materias de: Licenciatura en Administración.\n\nCambió algún formato que originó un error en el scrapeo.'
+    enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)
