@@ -19,10 +19,6 @@ WORKDIR /usr/src/
 # Copiar el código del front-end
 COPY . .
 
-# Copiar el archivo requirements.txt al contenedor
-COPY ../codigo_python/requirements.txt .
-COPY ../codigo_python/base.py .
-
 # Instalar las dependencias de npm
 RUN npm install
 

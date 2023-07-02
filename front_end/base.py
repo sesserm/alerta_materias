@@ -6,8 +6,8 @@ import json
 from datetime import datetime
 import os
 from dotenv import load_dotenv
-#from ..codigo_python.utilidad import *
-#from ..codigo_python.db import open_connection, mail
+from utilidad import *
+from db import open_connection, mail
 
 # Conectarse a la base de datos
 try:
