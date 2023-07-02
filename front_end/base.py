@@ -109,6 +109,7 @@ output.write("</html>\n")
 
 # Escribo el HTML en root
 with open("../index.html", "w", encoding="utf-8") as f:
+    print(output.getvalue())
     f.write(output.getvalue())
 
 cur.close()
