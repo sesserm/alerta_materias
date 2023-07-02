@@ -10,7 +10,7 @@ codigo_python/*.csv
 front_end/node_modules
 
 # Ingore archivos temporales
-.tmp
+**/*.tmp
 
 # Ignore pycache
 codigo_python/__pycache__
