@@ -1,0 +1,13 @@
+FROM node:19-alpine3.16
+
+RUN mkdir -p /usr/src/
+
+WORKDIR /usr/src/
+
+COPY . .
+
+RUN npm install
+
+RUN /bin/sh -c "apk add --no-cache bash"
+
+CMD ["bash"]
