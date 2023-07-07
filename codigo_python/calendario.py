@@ -23,6 +23,7 @@ contenido_enlace = list()
 
 # Obtengo variables de entorno a nivel global
 variables_entorno = obtener_var_entorno()
+contador_errores = 0
 
 for row in rows:
     tds = row.find_all('td')
@@ -33,19 +34,19 @@ for row in rows:
 
         fecha = tds[2].text.upper().strip()
         fecha = quitar_acentos(fecha)
-        # print(fecha)
+        #print(fecha)
         patron_fecha = r"(\d{2}/\d{2}/\d{2}(\d{2})?|\d{2}/\d{2}/\d{4})"
         fecha_encontrada = re.search(patron_fecha, fecha)
-        # print(fecha_encontrada)
+        #print(fecha_encontrada)
         if fecha_encontrada:
             fecha = fecha_encontrada.group(1)
-            #print(fecha)
+            print(fecha)
             fechas.append(fecha)
         else:
-            destinatarios = [variables_entorno.get('MAIL')]
-            asunto = 'ERROR - PROYECTO ALERTA-FCEA '
-            mensaje = 'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo.'
-            enviar_correo(destinatarios, asunto, mensaje)
+            contador_errores +=1
+            # Se envia un mail con la cantidad de errores posteriormente
+            fechas.append('01/01/9999') # Materia sin fecha en grilla
+            
 
         materia = tds[1].text.upper().strip()
         materia = quitar_acentos(materia)
@@ -59,7 +60,11 @@ for row in rows:
                 info = contenido.text.strip()
                 contenido_enlace.append((codigo, info, fecha))
         # AQUI IDENTIFICO CUALES TIENE ENLACE DISPONIBLE, DEPUES TENGO QUE ARREGLAR CUAL MATERIA EN PATICULAR TIENE EL ENLACE ASOCIADO.
-
+if contador_errores > 0 :
+    destinatarios = [variables_entorno.get('MAIL')]
+    asunto = 'ERROR - PROYECTO ALERTA-FCEA '
+    mensaje = f'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo. Hubo {contador_errores} errores. Probablemente fue un cambio de fecha. Revisar bien en rama Mantenimiento'
+    enviar_correo(destinatarios, asunto, mensaje)
 print(len(codigos), len(materias), len(fechas), len(enlaces_info))
 # La longitud tiene que ser la misma para usar la funcion zip. No lo son. En donde me faltan fechas???
 enlaces_analizar = list()
