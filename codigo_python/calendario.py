@@ -18,6 +18,7 @@ materias = list()
 enlaces_info = list()
 fechas = list()
 contenido_enlace = list()
+contador_errores = 0
 
 for row in rows:
     tds = row.find_all('td')
@@ -34,10 +35,8 @@ for row in rows:
             fecha = fecha_encontrada.group(1)
             fechas.append(fecha)
         else:
-            DESTINATARIOS = [mail()]
-            ASUNTO = 'ERROR - PROYECTO ALERTA-FCEA '
-            MENSAJE = 'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo.'
-            enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)
+            contador_errores +=1
+            fechas.append('01/01/9999') 
 
         materia = tds[1].text.upper().strip()
         materia = quitar_acentos(materia)
@@ -50,6 +49,12 @@ for row in rows:
             for contenido in enlace_tag:
                 info = contenido.text.strip()
                 contenido_enlace.append((codigo, info, fecha))
+
+if contador_errores > 2:
+    DESTINATARIOS = [mail()]
+    ASUNTO = 'ERROR - PROYECTO ALERTA-FCEA '
+    MENSAJE = f'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo. Hubo {contador_errores} errores. Probablemente fue un cambio de fecha. Revisar bien en rama Mantenimiento.'
+    enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)
 
 # Arreglo enlaces para los casos donde se tiene dos materias en una misma fila
 enlaces_analizar = list()
