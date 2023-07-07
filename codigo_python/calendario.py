@@ -60,7 +60,7 @@ for row in rows:
                 info = contenido.text.strip()
                 contenido_enlace.append((codigo, info, fecha))
         # AQUI IDENTIFICO CUALES TIENE ENLACE DISPONIBLE, DEPUES TENGO QUE ARREGLAR CUAL MATERIA EN PATICULAR TIENE EL ENLACE ASOCIADO.
-if contador_errores > 0 :
+if contador_errores > 2 :
     destinatarios = [variables_entorno.get('MAIL')]
     asunto = 'ERROR - PROYECTO ALERTA-FCEA '
     mensaje = f'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo. Hubo {contador_errores} errores. Probablemente fue un cambio de fecha. Revisar bien en rama Mantenimiento'
