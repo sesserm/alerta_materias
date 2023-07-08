@@ -116,7 +116,7 @@ button.limpiar:hover {
     color: black;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     /* Estilos para pantallas con ancho menor a 600px */
 
     .container {
