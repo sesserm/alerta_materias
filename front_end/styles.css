@@ -116,8 +116,14 @@ button.limpiar:hover {
     color: black;
 }
 
+.contenedor-tabla {
+    overflow-x: auto;
+    max-width: 100%;
+    width: fit-content;
+}
+
 @media screen and (max-width: 800px) {
-    /* Estilos para pantallas con ancho menor a 600px */
+    /* Estilos para pantallas con ancho menor a 800px */
 
     .container {
         flex-direction: column;
@@ -144,4 +150,22 @@ button.limpiar:hover {
     table {
         font-size: 0.8rem;
     }
+
+    .contenedor-tabla {
+        /* Nuevos estilos */
+        
+        max-width: 100vw;
+        width: 100vw; /* Reemplaza 'fit-content' con '100%' */
+    }
+
+    table {
+        /* Nuevos estilos */
+        font-size: 0.8rem;
+    }
+    
+    th,td {
+  font-size: 0.8rem; /* Cambia el valor según tus preferencias */
+  padding: 0.3rem;
+}
+
 }
