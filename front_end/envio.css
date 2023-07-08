@@ -150,6 +150,10 @@ button.limpiar:hover {
     table {
         font-size: 0.8rem;
     }
+
+    td,th {
+        font-size: 16px !important;
+    }
     
 }
 
