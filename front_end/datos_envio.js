@@ -4,8 +4,9 @@ const datosSeleccionados = JSON.parse(localStorage.getItem('datosSeleccionados')
 //  Envio el formulario al servidor
 const formulario = {};
 let puerto = 3000
+
 function enviarDatos(formulario) {
-  fetch(`http://localhost:${puerto}/guardar-datos`, {
+  fetch(`http://146.190.124.191:${puerto}/guardar-datos`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
