@@ -181,10 +181,14 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
                     fecha_solicitud = row[7]
                     DESTINATARIOS = [usuario]
                     ASUNTO = 'NOTA DISPONIBLE ALERTA-FCEA '
-                    MENSAJE = f"""¡Hola!
-                    Te informamos que ya se encuentra disponible la nota correspondiente a {row[1]}, la cual tuvo lugar el {fecha_mails}.
-                    Recuerda estar al pendiente de la grilla oficial en caso de que se realicen modificaciones posteriores a esta notificación.
-                    ¡Saludos!"""
+                    MENSAJE = f"""
+¡Hola!
+                    
+Te informamos que ya se encuentra disponible la nota correspondiente a {row[1]}, la cual tuvo lugar el {fecha_mails}.
+
+Recuerda estar al pendiente de la grilla oficial en caso de que se realicen modificaciones posteriores a esta notificación.
+
+¡Saludos!"""
                     enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)
                     notificaciones_enviadas.add((row[0], row[1], row[2]))
                     # Insertar registro en tabla historica y borrar de usuarios

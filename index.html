@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Genera tu alerta</title>
 <link rel="stylesheet" href="front_end/styles.css">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="icon" sizes="32x32" type="image/png" href="assets/favicon-32x32.png">
+<link rel="icon" sizes="16x16" type="image/png" href="assets/favicon-16x16.png">
+<link rel="manifest" href="assets/site.webmanifest">
 </head>
 <body>
 <div class="container">
@@ -21,6 +25,7 @@
 <button class="limpiar"  id="limpiar-btn">Limpiar Seleccion <span id = "seleccionados" > 0 seleccionados </span></button>
 </div>
 </div>
+<div class="contenedor-tabla">
 <table>
 <thead>
 <tr>
@@ -144,6 +149,7 @@
 <td>
 <select>
 <option value='04-05-2023'>04-05-2023</option>
+<option value='22-06-2023'>22-06-2023</option>
 <option value='06-07-2023'>06-07-2023</option>
 </select>
 </td>
@@ -168,7 +174,6 @@
 <td>
 <select>
 <option value='02-05-2023'>02-05-2023</option>
-<option value='04-07-2023'>04-07-2023</option>
 </select>
 </td>
 </tr>
@@ -424,8 +429,7 @@
 <td>
 <select>
 <option value='11-05-2023'>11-05-2023</option>
-<option value='03-07-2023'>03-07-2023</option>
-<option value='13-07-2023'>13-07-2023</option>
+<option value='06-07-2023'>06-07-2023</option>
 </select>
 </td>
 </tr>
@@ -542,6 +546,7 @@
 <select>
 <option value='10-05-2023'>10-05-2023</option>
 <option value='12-07-2023'>12-07-2023</option>
+<option value='01-01-9999'>01-01-9999</option>
 </select>
 </td>
 </tr>
@@ -564,6 +569,7 @@
 <select>
 <option value='21-04-2023'>21-04-2023</option>
 <option value='13-05-2023'>13-05-2023</option>
+<option value='20-06-2023'>20-06-2023</option>
 <option value='15-07-2023'>15-07-2023</option>
 </select>
 </td>
@@ -588,6 +594,7 @@
 <option value='29-04-2023'>29-04-2023</option>
 <option value='10-05-2023'>10-05-2023</option>
 <option value='12-07-2023'>12-07-2023</option>
+<option value='01-01-9999'>01-01-9999</option>
 </select>
 </td>
 </tr>
@@ -780,7 +787,7 @@
 <td>
 <select>
 <option value='04-05-2023'>04-05-2023</option>
-<option value='23-06-2023'>23-06-2023</option>
+<option value='29-06-2023'>29-06-2023</option>
 </select>
 </td>
 </tr>
@@ -805,7 +812,7 @@
 <td>
 <select>
 <option value='27-04-2023'>27-04-2023</option>
-<option value='27-06-2023'>27-06-2023</option>
+<option value='28-06-2023'>28-06-2023</option>
 </select>
 </td>
 </tr>
@@ -816,6 +823,7 @@
 <td>
 <select>
 <option value='05-05-2023'>05-05-2023</option>
+<option value='30-06-2023'>30-06-2023</option>
 </select>
 </td>
 </tr>
@@ -862,6 +870,16 @@
 </td>
 </tr>
 <tr data-id='74'>
+<td>I549</td>
+<td>TALLER PRACTICO DE COMPETENCIAS DIGITALES PARA LA GESTION ACADEMICA E INSTITUCIONAL</td>
+<td><input type='checkbox'></td>
+<td>
+<select>
+<option value='02-07-2023'>02-07-2023</option>
+</select>
+</td>
+</tr>
+<tr data-id='75'>
 <td>E71</td>
 <td>TEORIAS DEL DESARROLLO ECONOMICO</td>
 <td><input type='checkbox'></td>
@@ -871,7 +889,7 @@
 </select>
 </td>
 </tr>
-<tr data-id='75'>
+<tr data-id='76'>
 <td>C82</td>
 <td>TRIBUTARIA II</td>
 <td><input type='checkbox'></td>
@@ -885,48 +903,8 @@
 </tbody>
 </table>
 </div>
+</div>
 <script src="front_end/app.js"></script>
-<script>
-var selects = document.getElementsByTagName('select');
-for (var i = 0; i < selects.length; i++) {
-  selects[i].addEventListener('change', function() {
-    var selectedOption = this.options[this.selectedIndex];
-    var selectedDate = selectedOption.value;
-    var datesContainer = this.parentNode.querySelector('.dates-list');
-    var expandableIcon = this.parentNode.querySelector('.expandable');
-    expandableIcon.textContent = selectedDate;
-    datesContainer.classList.add('hidden');
-  });
-  selects[i].addEventListener('click', function(event) {
-    var datesContainer = this.parentNode.querySelector('.dates-list');
-    datesContainer.classList.toggle('hidden');
-    event.stopPropagation();
-  });
-  selects[i].addEventListener('focus', function(event) {
-    var fechaList = Array.from(this.options).map(function(option) {
-      return option.value;
-    });
-    fechaList.sort(function(a, b) {
-      return new Date(a) - new Date(b);
-    });
-    var selectedDate = this.value;
-    this.innerHTML = '';
-    for (var j = 0; j < fechaList.length; j++) {
-      var option = document.createElement('option');
-      option.value = fechaList[j];
-      option.textContent = fechaList[j];
-      this.appendChild(option);
-    }
-    this.value = selectedDate;
-  });
-}
-var datesContainers = document.getElementsByClassName('dates-list');
-for (var i = 0; i < datesContainers.length; i++) {
-  var datesContainer = datesContainers[i];
-  if (datesContainer.innerHTML.trim() === '') {
-    datesContainer.innerHTML = 'SIN DATO';
-  }
-}
-</script>
+<script src="front_end/estructura_fecha.js"></script>
 </body>
 </html>
