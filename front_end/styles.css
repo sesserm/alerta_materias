@@ -164,8 +164,8 @@ button.limpiar:hover {
     }
     
     th,td {
-  font-size: 0.8rem; /* Cambia el valor según tus preferencias */
-  padding: 0.3rem;
+  font-size: 0.75rem; /* Cambia el valor según tus preferencias */
+  padding: 0.2rem;
 }
 
 }
