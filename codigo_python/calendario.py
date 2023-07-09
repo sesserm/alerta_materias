@@ -221,7 +221,7 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
                     mensaje = f"""
 ¡Hola!
                     
-Te informamos que ya se encuentra disponible la nota correspondiente a {row[1]}, la cual tuvo lugar el {fecha_mails}.
+Te informamos que ya se encuentra disponible la nota correspondiente a {row[1]} del {fecha_mails}.
 
 Recuerda estar al pendiente de la grilla oficial en caso de que se realicen modificaciones posteriores a esta notificación.
 
