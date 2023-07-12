@@ -47,7 +47,8 @@ proyecto, cabe resaltar las siguientes:
 -  Docker
 -  Jenkins
 -  Git
--  HTML/CSS
+-  HTML/CS
+-  NGINX
 
 ## Limitaciones
 Este proyecto presenta ciertas limitaciones que son importantes de remarcar.
