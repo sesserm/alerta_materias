@@ -36,6 +36,8 @@ if len(codigos) == len(semestres):
         {'CODIGO': 'I51', 'MATERIA': 'INTRODUCCION A LA METODOLOGIA'}, ignore_index=True)
     df_filtrado = df_filtrado.append(
         {'CODIGO': 'MC128', 'MATERIA': 'COMPL.METODOS CUANTITATIVOS. II'}, ignore_index=True)
+    df_filtrado = df_filtrado.append(
+        {'CODIGO': 'S48 (15082 EDUPER)', 'MATERIA': 'PLANEAMIENTO ESTRATEGICO UNIVERSITARIO'}, ignore_index=True)
     df_filtrado.to_csv('./materias_economia.csv', index=False)
 
 # Alerta en caso de error de scrapeo 
