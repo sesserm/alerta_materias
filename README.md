@@ -1,6 +1,6 @@
 # Proyecto de alerta de resultado
 #### _Montevideo, Uruguay._
-Última modificación: _25/06/2023_
+Última modificación: _12/07/2023_
 
 ## Objetivo
 El microproyecto "Alerta de resultado" tiene como objetivo principal brindar a los usuarios la capacidad de crear alertas para las asignaturas de su interés durante los periodos académicos establecidos por la universidad.
