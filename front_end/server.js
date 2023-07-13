@@ -23,7 +23,7 @@ app.use(cors()); // Habilita los encabezados CORS en las respuestas del servidor
 
 let email = "";
 
-app.post('/guardar-datos', (req, res) => {
+app.post('/api/guardar-datos', (req, res) => {
   const formulario = req.body.formulario;
   const nuevo_formulario = [];
   let materiasSeleccionadas = []; // Variable para almacenar las materias seleccionadas
