@@ -169,7 +169,7 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
             join_query = sql.SQL("SELECT c.codigo, c.materia, c.fecha, c.nota_disponible, u.usuario, u.nota_disponible, u.medio, u.fecha_solicitud FROM alerta_facultad.calendario AS c INNER JOIN alerta_facultad.usuarios AS u ON c.codigo = u.codigo AND c.fecha = u.fecha_evaluacion")
             cursor.execute(join_query)
             join_results = cursor.fetchall()
-            notificaciones_enviadas = set()
+            notificaciones_enviadas = list()
             for row in join_results:
                 if row[3] == 'SI' and row[5] == 'NO' and (row[0], row[1], row[2]) not in notificaciones_enviadas:
                     codigo = row[0]
@@ -190,7 +190,7 @@ Recuerda estar al pendiente de la grilla oficial en caso de que se realicen modi
 
 ¡Saludos!"""
                     enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)
-                    notificaciones_enviadas.add((row[0], row[1], row[2]))
+                    notificaciones_enviadas.append((row[0], row[1], row[2]))
                     # Insertar registro en tabla historica y borrar de usuarios
                     try:
                         insert_query = sql.SQL(
