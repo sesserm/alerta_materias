@@ -73,3 +73,7 @@ Las modificaciones efectuadas al proyecto se encuentran sujetas al feedback prop
 -  Incorporar los exámenes dentro de las asignaturas a notificar
 -  Transformar la aplicación en una PWA para brindarle al usuario facilidad y comodidad en su uso
 -  Implementar un sistema de colas (sujeto a análisis de solicitudes)
+
+## Resultado del proyecto
+### Página principal
+![Diagrama de flujo](./assets/landing.png)
