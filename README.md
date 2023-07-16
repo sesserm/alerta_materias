@@ -77,3 +77,6 @@ Las modificaciones efectuadas al proyecto se encuentran sujetas al feedback prop
 ## Resultado del proyecto
 ### Página principal
 ![Diagrama de flujo](./assets/landing.png)
+
+### Guardado de datos
+![Diagrama de flujo](./assets/guardar_datos.png)
