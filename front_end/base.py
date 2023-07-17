@@ -65,7 +65,7 @@ output.write("<label for=\"input2\">Materia:</label>\n")
 output.write(
     "<input type=\"text\" id=\"input2\" placeholder=\"Ingresa una materia...\">\n")
 output.write(
-    "<button class=\"continuar\" id=\"continuar-btn\">Continuar</button>\n")
+    "<button class=\"continuar\" id=\"continuar-btn\">Generar alerta</button>\n")
 output.write(
     "<button class=\"limpiar\"  id=\"limpiar-btn\">Limpiar Seleccion <span id = \"seleccionados\" > 0 seleccionados </span></button>\n")
 output.write("</div>\n")
