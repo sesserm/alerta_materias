@@ -85,7 +85,7 @@ app.post('/api/guardar-datos', (req, res) => {
                             from: process.env.MAIL,
                             to: email,
                             subject: "Confirmación de alerta",
-                            text: `Gracias por utilizar el sistema de alertas.\n\nLas alertas generadas son:\n\n${textoMaterias}\n\nTen en cuenta que este sistema no pretende sustituir la página oficial. El objetivo es meramente informativo.\n\nRecuerda siempre verificar en la página oficial dado que pueden existir modificaciones posteriores a la notificación.`
+                            text: `Gracias por utilizar el sistema de alertas.\n\nLas alertas generadas son:\n\n${textoMaterias}\n\nTen en cuenta que este sistema no pretende sustituir la página oficial. El objetivo es meramente informativo.\n\nRecuerda siempre verificar en la página oficial dado que pueden existir modificaciones posteriores a la notificación.\n\nIMPORTANTE:Esta es una versión de prueba y puede fallar. Se sugiere revisar la grilla oficial de forma diaria para evitar inconvenientes.`
     };
     transporter.sendMail(configuracion, (error, info) => {
         if (error) {
