@@ -213,5 +213,5 @@ Recuerda estar al pendiente de la grilla oficial en caso de que se realicen modi
         except:
             DESTINATARIOS = [mail()]
             ASUNTO = 'ERROR - PROYECTO ALERTA-FCEA '
-            MENSAJE = f'Error al borrar y volver a cargar los datos del calendario.'
+            MENSAJE = f'Error al borrar y volver a cargar los datos del calendario o al notificar al usuario.'
             enviar_correo(DESTINATARIOS, ASUNTO, MENSAJE)
