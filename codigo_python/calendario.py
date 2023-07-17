@@ -204,10 +204,10 @@ if len(codigos) == len(materias) == len(fechas) == len(enlaces_info):
 
             # Recupera todos los resultados del cursor
             join_results = cursor.fetchall()
-            notificaciones_enviadas = set()
+            #notificaciones_enviadas = set()
             for row in join_results:
                 print(row)
-                if row[3] == 'SI' and row[5] == 'NO' and (row[0], row[1], row[2]) not in notificaciones_enviadas:
+                if row[3] == 'SI' and row[5] == 'NO':# and (row[0], row[1], row[2]) not in notificaciones_enviadas:
                     print('Nota disponible!')
                     codigo = row[0]
                     materia = row[1]
@@ -227,7 +227,7 @@ Recuerda estar al pendiente de la grilla oficial en caso de que se realicen modi
 
 ¡Saludos!"""
                     enviar_correo(destinatarios, asunto, mensaje)
-                    notificaciones_enviadas.add((row[0], row[1], row[2]))
+                    #notificaciones_enviadas.add((row[0], row[1], row[2]))
                     #Insertar registro en tabla historica y borrar de usuarios
                     try:
                         insert_query = sql.SQL(
