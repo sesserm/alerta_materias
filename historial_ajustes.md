@@ -10,3 +10,10 @@ Se genera una variable de conteo de errores, donde siempre que se tenga esa fech
 Adicionalmente, en caso de que la cantidad de errores sea mayor a 2 (es decir, aparece algun error no contemplado) se notifica.
 
 Se hace un nuevo tag: v.0.0.2
+
+## 21/07/2023 
+Se realizó un ajuste en el script de "codigo_python/calendario.py".
+Se dio un error en el scrapeo, dado que la página oficial no puso una fecha en formato dd/mm/yyyy o dd/mm/yyy.
+Se expandió el margen de error a 3 errores.
+
+Se hace un nuevo tag: v.0.0.3
