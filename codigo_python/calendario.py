@@ -50,7 +50,7 @@ for row in rows:
                 info = contenido.text.strip()
                 contenido_enlace.append((codigo, info, fecha))
 
-if contador_errores > 2:
+if contador_errores > 3:
     DESTINATARIOS = [mail()]
     ASUNTO = 'ERROR - PROYECTO ALERTA-FCEA '
     MENSAJE = f'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo. Hubo {contador_errores} errores. Probablemente fue un cambio de fecha. Revisar bien en rama Mantenimiento.'
