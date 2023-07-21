@@ -40,10 +40,11 @@ for row in rows:
         #print(fecha_encontrada)
         if fecha_encontrada:
             fecha = fecha_encontrada.group(1)
-            print(fecha)
+            #print(fecha)  ## PRINTEA LAS FECHAS NORMALES
             fechas.append(fecha)
         else:
             contador_errores +=1
+            print(fecha) # ESTO SE UTILIZA PARA DEBUGEAR PROBLEMAS !!!!!!!!!!!
             # Se envia un mail con la cantidad de errores posteriormente
             fechas.append('01/01/9999') # Materia sin fecha en grilla
             
@@ -60,7 +61,7 @@ for row in rows:
                 info = contenido.text.strip()
                 contenido_enlace.append((codigo, info, fecha))
         # AQUI IDENTIFICO CUALES TIENE ENLACE DISPONIBLE, DEPUES TENGO QUE ARREGLAR CUAL MATERIA EN PATICULAR TIENE EL ENLACE ASOCIADO.
-if contador_errores > 2 :
+if contador_errores > 3 :
     destinatarios = [variables_entorno.get('MAIL')]
     asunto = 'ERROR - PROYECTO ALERTA-FCEA '
     mensaje = f'Existen errores en el scrapeo de la fecha del calendario.\n\nCambió algún formato que originó un error en el scrapeo. Hubo {contador_errores} errores. Probablemente fue un cambio de fecha. Revisar bien en rama Mantenimiento'
